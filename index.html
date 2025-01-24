@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流体解析ダッシュボード</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px">
+                <div>
+                    <h3>時間発展データ</h3>
+                    <p class="file-name">（Variation_In_Time.dat）</p>
+                    <input type="file" id="timeFile" accept=".dat,.txt">
+                    <div id="timeErr" class="error"></div>
+                </div>
+                <div>
+                    <h3>解析結果（UVP）</h3>
+                    <p class="file-name">（solution_uvp.dat）</p>
+                    <input type="file" id="solutionFile" accept=".dat,.txt">
+                    <div id="solutionErr" class="error"></div>
+                </div>
+                <div>
+                    <h3>発散データ</h3>
+                    <p class="file-name">（divergent.dat）</p>
+                    <input type="file" id="divergentFile" accept=".dat,.txt">
+                    <div id="divergentErr" class="error"></div>
+                </div>
+                <div>
+                    <h3>格子データ</h3>
+                    <p class="file-name">（grid.dat）</p>
+                    <input type="file" id="gridFile" accept=".dat,.txt">
+                    <div id="gridErr" class="error"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="grid">格子</button>
+                <button class="tab-button" data-tab="time">時間発展</button>
+                <button class="tab-button" data-tab="velocity">速度場</button>
+                <button class="tab-button" data-tab="pressure">圧力分布</button>
+                <button class="tab-button" data-tab="divergence">発散</button>
+            </div>
+
+            <div class="tab-content active" id="gridTab">
+                <div class="plot-container">
+                    <div id="gridInfo"></div>
+                </div>
+            </div>
+            <div class="tab-content" id="timeTab">
+                <div class="plot-container">
+                    <div id="timePlot"></div>
+                </div>
+            </div>
+            <div class="tab-content" id="velocityTab">
+                <div class="velocity-plots">
+                    <div id="uPlot"></div>
+                    <div id="vPlot"></div>
+                </div>
+            </div>
+            <div class="tab-content" id="pressureTab">
+                <div class="plot-container">
+                    <div id="pPlot"></div>
+                </div>
+            </div>
+            <div class="tab-content" id="divergenceTab">
+                <div class="plot-container">
+                    <div id="divPlot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
